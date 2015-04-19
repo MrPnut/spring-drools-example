@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:drools-spring="http://drools.org/schema/drools-spring"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://drools.org/schema/drools-spring
+                            http://drools.org/schema/drools-spring.xsd">
+
+    <drools-spring:kbase id="kbase">
+        <drools-spring:resources>
+            <drools-spring:resource type="DTABLE" source="classpath:rules/org/drools/examples/ExamplePolicyPricing.xls">
+                <drools-spring:decisiontable-conf input-type="XLS" worksheet-name="Tables" />
+            </drools-spring:resource>
+        </drools-spring:resources>
+    </drools-spring:kbase>
+
+    <drools-spring:ksession type="stateless" kbase="kbase" id="ksession" />
+
+</beans>
