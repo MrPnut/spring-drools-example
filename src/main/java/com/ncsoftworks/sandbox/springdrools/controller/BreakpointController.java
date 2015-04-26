@@ -1,9 +1,7 @@
 package com.ncsoftworks.sandbox.springdrools.controller;
 
-import org.drools.KnowledgeBase;
-import org.drools.kproject.KSession;
-import org.drools.runtime.StatefulKnowledgeSession;
-import org.drools.runtime.StatelessKnowledgeSession;
+import org.kie.api.KieBase;
+import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class BreakpointController {
 
     @Autowired
-    private KnowledgeBase knowledgeBase;
+    private KieBase knowledgeBase;
 
     @Autowired
-    private StatelessKnowledgeSession statelessKnowledgeSession;
+    private StatelessKieSession statelessKnowledgeSession;
 
     @RequestMapping("/")
     public void breakpoint() {

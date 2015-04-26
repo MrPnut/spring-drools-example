@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:drools-spring="http://drools.org/schema/drools-spring"
+        xmlns:kie-spring="http://drools.org/schema/kie-spring"
+        xmlns:context="http://www.springframework.org/schema/context"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
                             http://www.springframework.org/schema/beans/spring-beans.xsd
-                            http://drools.org/schema/drools-spring
-                            http://drools.org/schema/drools-spring.xsd">
+                            http://drools.org/schema/kie-spring
+                            http://drools.org/schema/kie-spring.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <drools-spring:kbase id="kbase">
-        <drools-spring:resources>
-            <drools-spring:resource type="DTABLE" source="classpath:rules/org/drools/examples/ExamplePolicyPricing.xls">
-                <drools-spring:decisiontable-conf input-type="XLS" worksheet-name="Tables" />
-            </drools-spring:resource>
-        </drools-spring:resources>
-    </drools-spring:kbase>
 
-    <drools-spring:ksession type="stateless" kbase="kbase" id="ksession" />
+
+    <kie-spring:kmodule id="kmodule">
+        <kie-spring:kbase name="kbase" default="true">
+            <kie-spring:ksession name="statelessKieSession" type="stateless" default="true" />
+        </kie-spring:kbase>
+    </kie-spring:kmodule>
+
+    <bean id="kiePostProcessor"
+          class="org.kie.spring.KModuleBeanFactoryPostProcessor"/>
+
+    <context:component-scan base-package="org.kie.spring.annotations" />
 
 </beans>
