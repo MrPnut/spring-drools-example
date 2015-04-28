@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public abstract class PricingRuleDTExampleTestSupport {
 
     @KBase
-    @KReleaseId(groupId = "com.ncsoftworks", artifactId = "policy-rules", version = "1.0")
+    @KReleaseId(groupId = "com.ncsoftworks", artifactId = "policy-rules", version = "LATEST")
     private KieBase kieBase;
 
     public void testExecuteExample() throws Exception {
