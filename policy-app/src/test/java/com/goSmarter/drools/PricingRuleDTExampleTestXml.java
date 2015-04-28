@@ -1,8 +1,10 @@
 package com.goSmarter.drools;
 
 import com.ncsoftworks.sandbox.springdrools.config.DroolsXmlNamespaceConfig;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kie.api.cdi.KReleaseId;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

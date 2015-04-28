@@ -1,5 +1,8 @@
 package com.goSmarter.drools;
 
+import org.kie.api.KieBase;
+import org.kie.api.cdi.KBase;
+import org.kie.api.cdi.KReleaseId;
 import org.kie.api.cdi.KSession;
 import org.kie.api.runtime.StatelessKieSession;
 
@@ -12,14 +15,15 @@ import static org.junit.Assert.assertEquals;
  */
 public abstract class PricingRuleDTExampleTestSupport {
 
-    @KSession("statelessKieSession")
-    private StatelessKieSession statelessKnowledgeSession;
+    @KBase
+    @KReleaseId(groupId = "com.ncsoftworks", artifactId = "policy-rules", version = "1.0")
+    private KieBase kieBase;
 
     public void testExecuteExample() throws Exception {
         Driver driver = new Driver();
         Policy policy = new Policy();
 
-        statelessKnowledgeSession.execute(Arrays.asList(new Object[]{driver, policy}));
+        kieBase.newStatelessKieSession().execute(Arrays.asList(new Object[]{driver, policy}));
         assertEquals(120, policy.getBasePrice());
     }
 
