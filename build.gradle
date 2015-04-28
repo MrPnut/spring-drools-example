@@ -40,6 +40,7 @@ subprojects {
         Properties props = new Properties();
         File propertiesFile = new File("$project.buildDir/publications/mavenJava/pom.properties")
         if (!propertiesFile.exists()) {
+            propertiesFile.mkdirs()
             propertiesFile.createNewFile()
         }
         props.load(propertiesFile.newDataInputStream())
